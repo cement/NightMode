@@ -27,24 +27,12 @@
 
 
   chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {
-     //console.dir(message);
-     switch(message.token){
-       case 0:
-           removeNightCss();
-           break;
-       case 1:
+     console.dir(message);
+     if(message.toggle){
           removeNightCss();
           insertNightCss(message);
-          break;
-
-       case 2:
-          insertNightCss(message);
-          break;
-
-       case 3:
+     }else{
           removeNightCss();
-          insertNightCss(message);
-          break;
      }
   });
   

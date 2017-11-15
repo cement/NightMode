@@ -29,7 +29,7 @@ function displayChangeValue(changeValue) {
 }   
 function switcher(switcher) {
     if(switcher){
-         background.curentCtrl.token=1;
+         //background.curentToken(1);
          toggle.value='恢复白天模式';
          document.body.style.backgroundColor=background.curentCtrl.backColor;
          document.body.style.color=background.curentCtrl.textColor;
@@ -39,7 +39,7 @@ function switcher(switcher) {
               items[i].style.display="inline";
          }
      }else{
-         background.curentCtrl.token=0;
+         //background.curentToken(0);
          toggle.value='打开夜间模式';
          document.body.style.backgroundColor="";
          document.body.style.color="";
@@ -49,10 +49,11 @@ function switcher(switcher) {
               items[i].style.display="none";
          }
      }
+     background.sendMessageToContentScript(background.curentCtrl);
 }
    
 function chengeParams() {
-    if(background.switcher===true){
+    if(background.curentCtrl.toggle){
          background.curentCtrl.backColor=backColor.value;
          background.curentCtrl.textColor=textColor.value;
          background.curentCtrl.linkColor=linkColor.value;
@@ -68,24 +69,25 @@ function chengeParams() {
 }
 //console.dir(chrome.storage);
 toggle.onclick=function () {
-     console.log(background.switcher);
-     background.switcher=!background.switcher;
-     console.dir(background.curentCtrl.token);
-     switcher(background.switcher);
-     background.sendMessageToContentScript(background.curentCtrl);
-     console.dir(background.curentCtrl);
+     //console.log(background.switcher);
+     let toggle =background.toggleSwitcher();
+     //background.switcher=!background.switcher;
+     //console.dir(background.curentCtrl.token);
+     switcher(toggle);
+     
+     //console.dir(background.curentCtrl);
      //chrome.storage.local.set(background.curentCtrl);
      //chengeParams();
 };
 reDefault.onclick=function () {
      background.curentCtrl=Object.assign(background.curentCtrl,background.defultCtrl);
-     //background.defultCtrl.token=3;
-     displayChangeValue(background.defultCtrl);
-     document.body.style.backgroundColor=background.defultCtrl.backColor;
-     document.body.style.color=background.defultCtrl.textColor;
-     background.sendMessageToContentScript(background.defultCtrl);
+     //background.curentToken(1);
+     displayChangeValue(background.curentCtrl);
+     document.body.style.backgroundColor=background.curentCtrl.backColor;
+     document.body.style.color=background.curentCtrl.textColor;
+     background.sendMessageToContentScript(background.curentCtrl);
 };
 
 
 displayChangeValue(background.curentCtrl);
-switcher(background.switcher);
+switcher(background.curentCtrl.toggle);
