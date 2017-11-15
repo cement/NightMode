@@ -1,0 +1,43 @@
+﻿{
+    "manifest_version": 2,
+    "name": "YSH夜间模式",
+    "version": "1.0.0",
+    "description": "YSH夜间模式",
+    "icons":
+    {
+        "16": "img/icon(16).png",
+        "48": "img/icon(48).png",
+        "128": "img/icon(128).png"
+    },
+    "browser_action": 
+	{
+	  "default_icon": {
+         "19": "img/icon(19).png",
+         "38": "img/icon(38).png"
+      },
+		"default_title": "YSH夜间模式",
+		"default_popup": "popup.html"
+	},
+    "background":
+    {
+        "page": "background.html"
+    },
+    "content_scripts": [
+    {
+        "matches": ["http://*/*", "https://*/*"],
+        "js": ["js/contentscript.js"],
+        "css": ["css/display.css"],
+        "all_frames":true,
+        "run_at": "document_start"
+    }],
+    "permissions": [
+        //"chrome.storage.sync",
+        // "webRequest",
+        "storage",
+        "contextMenus", // 右键菜单
+        "http://*/*", // 可以通过executeScript或者insertCSS访问的网站
+        "https://*/*" // 可以通过executeScript或者insertCSS访问的网站
+    ],
+   // "web_accessible_resources": ["js/inject.js"],
+    "options_page": "options.html"
+}

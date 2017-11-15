@@ -1,0 +1,22 @@
+#content{
+	min-width: 160px;
+	text-align: center;
+}
+#content .item{
+	width:100%;
+	margin-bottom: 6px;
+}
+#content .item .full{
+	width:100%;
+	margin:0 auto;
+}
+#content .item input{
+	width:70%;
+	margin-left: 6px;
+	margin-right: 0px;
+	margin-top: 3px;
+	margin-bottom: 3px;
+}
+#content .hidden{
+	display: none;
+}

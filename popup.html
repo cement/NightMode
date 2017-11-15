@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>popup</title>
+    <link rel="stylesheet" href="css/popup.css" />
+   
+</head>
+<body>
+
+  <div id="content">
+  	
+   	<div class = "item full"><input class="full" id ="toggle" type="button" name="toggle" value="打开夜间模式"/></div>
+    <div class="item hidden"><span>背景</span><input id="backcolor" type="color" name ="backcolor" value="#000000"/></div>
+    <div class="item hidden"><span>文字</span><input id="textcolor" type="color" name="textcolor" value="#FFFFFF"/></div>
+    <div class="item hidden"><span>链接</span><input id="linkcolor" type="color" name="textcolor" value="#0000FF"/></div>
+    <div class="item hidden"><span>悬停</span><input id="linkhover" type="color" name="textcolor" value="#00FF00"/></div>
+    <div class="item hidden"><span>已访</span><input id="visited" type="color" name="textcolor" value="#00FF00"/></div>
+   	<div class="item hidden"><span>透明</span><input id="imgOpacity" type="range" name="imgOpacity" value="50" min="0" max="100" /><span id="percent">%0</span></div>
+   	<div class="item full hidden"><input class="full" id ="reDefault" type="button" name="reDefault" value="恢复默认"/></div>
+  </div>
+   
+  <script src="js/popup.js"></script>
+</body>
+</html>
